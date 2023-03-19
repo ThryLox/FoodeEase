@@ -2,11 +2,15 @@ Initialize the virtual env :
  py -m venv project-name (already done in this)
 
  Activate the env : 
- cd into deliver
+ cd into FoodEase within FoodEase
 
 enter this : Scripts/Activate
 
 (FoodEase) will appear in front of the termial 
+
+cd ..
+cd deliver
+
 
 then start the developemantal server : python manage.py runserver
 
