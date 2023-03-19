@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #3684e3">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'index' %}">FoodEase</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'index'%}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'about'%}">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Menu</a>
+          </li>
+          
+          <li class="nav-item">
+              <a class="nav-link" href="#"> Orders Now</a
+                >
+            </li>
+            
+        </ul>
+      </div>
+    </div>
+  </nav>
