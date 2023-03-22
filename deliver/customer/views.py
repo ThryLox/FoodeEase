@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views import View
 from .models import MenuItem, Category, OrderModel
+from .forms import CreateUserForms
 
+from django.contrib.auth.forms import UserCreationForm
 
 class Index(View):
     def get(self, request, *args, **kwargs):
@@ -66,3 +68,21 @@ class Order(View):
         }
 
         return render(request, 'customer/order_confirmation.html', context)
+    
+class Register(View):
+    def registerPage(request, *args, **kwargs):       
+
+        form = CreateUserForms(request.POST)
+        if request.method == 'POST':
+              form = CreateUserForms(request.POST)
+              if form.is_valid():
+                  form.save(commit=True)
+                  redirect('/login/')
+        context = {'form': form}
+        return render(request,'customer/register.html',context)
+    
+
+class Login(View):
+    def login(request, *args, **kwargs):
+
+        return render(request,'customer/login.html')
