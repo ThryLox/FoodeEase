@@ -21,7 +21,8 @@ from django.conf.urls.static import static
 from customer.views import *
 urlpatterns = [
     path('register/',Register.registerPage,name='register'),
-     path('login/',Login.login,name='login'),
+     path('accounts/login/',Login.loginPage,name='login'),
+      path('logout/',Logout.logoutUser,name='logout'),
     path('admin/', admin.site.urls),
     path('', Index.as_view(),name ='index'),
     path('about/', About.as_view(),name ='about'),

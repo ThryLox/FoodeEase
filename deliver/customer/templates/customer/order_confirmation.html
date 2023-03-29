@@ -18,7 +18,7 @@
 
 <div class="container-fluid col-md-6 offset-md-3">
     <div class="col-md-12 col-sm-12 p-4 text-center">
-        <h3 class="">Ordered Items</h3>
+        <h3 class="">Ordered Items for {{user}}</h3>
         {%for item in items%}
         <p> {{ item.name}} <span class="pl-3"> {{item.price}}</span></p>
         {%endfor%}
