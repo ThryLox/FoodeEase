@@ -27,29 +27,78 @@
                     </div>
                     <hr />
                 {% endfor %}
-                </div>                              
+                </div> 
+
+                
+                <div class="form-group pt-3">
+                    <label for="name">Full Name</label>
+                    <input required class="form-control" type="text" placeholder="Your name" name="name"/>
+                </div>
+
+                <div class="form-group pt-3">
+                    <label for="name">Full Name</label>
+                    <input required class="form-control" type="text" placeholder="Your name" name="name"/>
+                </div>
+
+                <div class="form-group pt-3">
+                    <label for="email">Email Address</label>
+                    <input required class="form-control" type="text" placeholder="example@company.com" name="email"/>
+                </div>
+           <div class="row">     
+            <div class="d-flex justify-content-evenly bg-light mb-4" style="height: 100px;">
+                <div class="form-group pt-3">
+                    <label for="street">Street</label>
+                    <input required class="form-control" type="text" placeholder=" Street" name="street"/>
+                </div>
+
+                <div class="form-group pt-3">
+                    <label for="city">City</label>
+                    <input required class="form-control" type="text" placeholder="City" name="city"/>
+                </div>
+
+                <div class="form-group pt-3">
+                    <label for="province">Province</label>
+                    <input required class="form-control" type="text" placeholder="Province" name="province"/>
+                </div>
+
+                <div class="form-group pt-3">
+                    <label for="zip_code">ZIP Code</label>
+                    <input required class="form-control" type="text" placeholder="ZIP" name="zip_code"/>
+                </div>
+            </div>
+        </div>         <br>
+
+        <button type="button" class="btn btn-dark" data-mdb-toggle="modal" data-mdb-target="#submitModal">
+            Place Order
+          </button>
                 <button class="btn btn-dark col-md-12 col-sm-12 p-4">Place Order!</button>
+
+
+
+                <div class="modal fade" id="submitModal" tabindex="-1" aria-labelledby="submitModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="submitModalLabel">Cofirm Order</h5>
+                          <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">Are you sure you added everything you wanted?</div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-dark">Place Order</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
+
+
             </form>
         </div>
     </div>
-  <!--  
-
-    {% for item in items%}
-    <div
-  class="bg-image card shadow-1-strong"
-  style="background-image: url('{{item.image.url}}');"
->
-  <div class="card-body text-white">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">
-      Some quick example text to build on the card title and make up the bulk of the
-      card's content.
-    </p>
-    <a href="#!" class="btn btn-outline-light">Button</a>
-  </div>
-</div>
-
-{%endfor%}
--->
+  
 </div>
 {% endblock content %}
