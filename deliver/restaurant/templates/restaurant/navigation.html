@@ -1,0 +1,64 @@
+<nav class="navbar  navbar-expand-lg navbar-light" style="background-color: #3684e3">
+    <div class="container-fluid me-auto mb-2 mb-lg-0">
+      <a class="navbar-brand" href="{% url 'index' %}">FoodEase</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav d-flex">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'index'%}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href=" ">About Us</a>
+          </li>
+
+          <ul class="navbar-nav d-flex flex-row me-1">
+            <li class="nav-item me-3 me-lg-0">
+              <a class="nav-link " href="{% url 'order' %}"> Orders Now</a>
+
+            </li>
+            
+          </ul>
+            
+        </ul>
+
+      </div>
+      <div class="d-flex align-items-center">         
+       
+        <div class="container-fluid">
+          <ul class="navbar-nav">
+            <!-- Avatar -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle d-flex align-items-center"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-mdb-toggle="dropdown"
+                aria-expanded="false"
+              >
+             <i class="fab fa-github"></i>
+            </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li>
+                  <a class="dropdown-item" href="#">My profile</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Logout</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        
+    </div>
+  </nav>

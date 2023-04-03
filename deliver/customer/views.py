@@ -10,7 +10,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 
-class Index( LoginRequiredMixin,View):
+class Index(LoginRequiredMixin,View):
    
     def get(self, request, *args, **kwargs):
         return render(request, 'customer/index.html')
@@ -56,7 +56,7 @@ class Order(LoginRequiredMixin,View):
         city = request.POST.get('city')
         street = request.POST.get('street')
         province = request.POST.get('province')
-        zip_code = request.POST.get('zip_codename')
+        zip_code = request.POST.get('zip_code')
 
         order_items = {
             'items': []
@@ -99,41 +99,22 @@ class Order(LoginRequiredMixin,View):
             'user':user
         }
 
+
+        return redirect('order_confirmation', pk = order.pk)
+    
+class OrderConfirmation(View):
+    def get(self, request, pk, *args, **kwards):
+        order= OrderModel.objects.get(pk=pk)
+
+        context  = {
+            'pk' : order.pk,
+            'items' : order.items,
+            'price' : order.price 
+        }
+
         return render(request, 'customer/order_confirmation.html', context)
-    
-class Register(View):
-    def registerPage(request, *args, **kwargs):       
-
-        form = CreateUserForms(request.POST)
-        if request.method == 'POST':
-              form = CreateUserForms(request.POST)
-              if form.is_valid():
-                  form.save(commit=True)
-                  user =form.cleaned_data.get('username')
-                  messages.success(request,'Account was created : ' + user )
-                  return redirect('/accounts/login/')
-        context = {'form': form}
-        return render(request,'customer/register.html',context)
-    
-
-class Login(View):
-    def loginPage(request, *args, **kwargs):
-        if request.method == 'POST':
-            username = request.POST.get('username')
-            password = request.POST.get('password')
-            user = authenticate(request, username=username,password=password)
-
-            if user is not None:
-                login(request,user)
-                return redirect('index')
-            else:
-                messages.info(request, "Username or password is incorrect")
-                
-
-        return render(request,'customer/login.html')
-
-class Logout(View):
-
-    def logoutUser(request):
-        logout(request)
-        return redirect('login')
+    def post(self, request, pk, *args, **kwards):
+        print(request.body)
+class OrderPayConfirmation(View):
+    def get(self, request, pk, *args, **kwards):
+        return render(request, 'customer/order_pay_confirmation.html')
