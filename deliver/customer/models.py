@@ -25,14 +25,6 @@ class OrderModel(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     price = models.DecimalField(max_digits=7,decimal_places=2)
     items = models.ManyToManyField('MenuItem', related_name='order', blank =True)
-<<<<<<< Updated upstream
-    name = models.CharField(max_length=50, blank=True)
-    email = models.CharField(max_length=50, blank=True)
-    City = models.CharField(max_length=50, blank=True)
-    street = models.CharField(max_length=50, blank=True)
-    zip_code = models.CharField(max_length=50, blank=True)
-    province = models.CharField(max_length=50, blank=True)
-=======
     created_on = models.DateTimeField(auto_now_add=True)
     price = models.DecimalField(max_digits=7,decimal_places=2)
     items = models.ManyToManyField('MenuItem', related_name='order', blank =True)
@@ -45,6 +37,5 @@ class OrderModel(models.Model):
     is_paid = models.BooleanField(default=False)
 
 
->>>>>>> Stashed changes
     def __str__(self) -> str:
         return f'Order:{self.created_on.strftime("%b %d %I: %M %p")}'
