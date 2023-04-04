@@ -26,6 +26,8 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', Index.as_view(),name ='index'),
     path('about/', About.as_view(),name ='about'),
+   
+
     path('order/',Order.as_view(),name='order'),
     path('restaurant', include('restaurant.urls')),
     path('order-confirmation/<int:pk>', OrderConfirmation.as_view(),name = 'order_confirmation'),
