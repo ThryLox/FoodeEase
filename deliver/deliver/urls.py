@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from customer.views import Index,About, Order, OrderConfirmation
+from customer.views import Index, About, Order, OrderConfirmation, Menu, MenuSearch
 from django.conf import settings
 from django.conf.urls.static import static
 from customer.views import *
@@ -26,6 +26,8 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', Index.as_view(),name ='index'),
     path('about/', About.as_view(),name ='about'),
+    path('menu/', Menu.as_view(),name ='menu'),
+    path('menu/search/', MenuSearch.as_view(),name ='menu-search'),
     path('order/',Order.as_view(),name='order'),
     path('restaurant', include('restaurant.urls')),
     path('order-confirmation/<int:pk>', OrderConfirmation.as_view(),name = 'order_confirmation'),
