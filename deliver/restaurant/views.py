@@ -45,8 +45,12 @@ class OrderDetails(LoginRequiredMixin, UserPassesTestMixin, View):
 
     def post(self, request, pk, *args, **kwargs):
         order = OrderModel.objects.get(pk=pk)
-        order.is_shipped = True
-        order.save()
+        if order.is_shipped == False:
+            order.is_shipped = True
+            order.save()
+        else:
+            order.is_paid = True
+            order.save()
 
         context = {
             'order': order
