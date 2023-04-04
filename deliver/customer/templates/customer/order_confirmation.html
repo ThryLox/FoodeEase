@@ -33,11 +33,55 @@
       </form>
       </div>
   </div>
+  <div class="row justify-content-center pb-2 pt-5">
+    <div class="col-md-6 text-center">
+      
+       
+      <button type="button" class="btn btn-dark" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
+       Pay Later
+      </button>
+      
+
+   
+    </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Order Reciept</h5>
+        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row justify-content-center pb-2 pt-5">
+          <div class="col-md-6 text-center">
+
+        <h3 class="">Thanks for ordering {{user}}</h3>
+        {%for item in items.all%}
+        <p> {{ item.name}} <span class="pl-3"> {{item.price}}</span></p>
+        {%endfor%}
+
+        <p class="font-weight=bold pt-4">Total : {{price}}</p>
+          </div>
+
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+       <a href="{% url 'index'%}">
+        <button type="button" class="btn btn-dark" >Go to Home page</button></a>
+      </div>
+    </div>
+  </div>
+</div>
 
 
   <div class="row justify-content-center pb-2 pt-5">
         <div class="col-md-6 text-center">
-            <h3>Pay Now or Pay With Cash on Delivery</h3>
+            <h3>You can also Pay Now </h3>
         </div>
     </div>
     <div class="row justify-content-center pb-5">
