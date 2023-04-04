@@ -1,20 +1,27 @@
 {% extends 'customer/base.html' %}
 
-
-{%block content%}
+{% block content %}
 
 <div class="container mb-5">
-    <div class="row justify-content-center mt-5">
-        <div class="col-md-12 col-sm-12 p-4 text-center">
-            <h1>Online Food Delivery</h1>
-        </div>
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-12 col-sm-12 p-4 text-center">
+      <h1>FoodEase</h1>
     </div>
-    <div class="row justify-content-center mt-5">
-        <div class="col-md-12 col-sm-12 p-4 text-center">
-            <h2>Place Order</h1>
-                <a href ="{% url 'order' %}" class="btn btn-primary" > Order now </a>
-        </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-sm-12 mb-4 mt-4">
+        <a class="twitter-timeline" href="https://twitter.com/foodbloggersCA?ref_src=twsrc%5Etfw">Tweets by foodbloggersCA</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>       <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
     </div>
+    <div class="col-md-6 col-sm-12 mb-4">
+      <div class="row justify-content-center mt-5">
+        <div class="col-md-12 col-sm-12 p-4 text-center">
+          <h2>Try us today!</h2>
+          <a href="{% url 'order' %}" class="btn btn-primary">Order now</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-{%endblock content%}
+{% endblock content %}
