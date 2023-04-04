@@ -114,7 +114,11 @@ class OrderConfirmation(View):
 
         return render(request, 'customer/order_confirmation.html', context)
     def post(self, request, pk, *args, **kwards):
-        print(request.body)
+        order = OrderModel.objects.last()
+        print(order)
+        order.delete()
+        return redirect('order')
+    
 class OrderPayConfirmation(View):
     def get(self, request, pk, *args, **kwards):
         return render(request, 'customer/order_pay_confirmation.html')
