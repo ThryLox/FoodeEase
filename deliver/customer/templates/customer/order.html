@@ -7,82 +7,75 @@
             <form method="POST">
                 {% csrf_token %}
                 <div class="pt-5">
-                    {% for item in items%}
-                    <div class="row">
-                        <div class="card" style="width: 18rem;">
-                            <div class="card mb-3">
-                                <img src="{{item.image.url}}" class="card-img-top " alt="Wild Landscape"/>
-                            </div>
-                        </div>
-                        <div class="col-md-8 col-sm-12">
-                            <div class="d-flex flex-row">
-                                <div class="form-group form-check">
-                                    <input type="checkbox" name="items[]" class="form-check-input" value="{{ item.pk }}">
-                                    <label class="form-check-label text-center">{{ item.name }}</label>
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                        {% for item in items%}
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="{{ item.image.url }}" class="card-img-top" style="max-height: 300px; width: auto; margin: 0 auto;" alt="Menu Item Image"/>                                <div class="card-body">
+                                    <h5 class="card-title">{{ item.name }}</h5>
+                                    <p class="card-text">{{ item.description }}</p>
+                                    <p class="card-text">{{ item.price }}</p>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="items[]" value="{{ item.pk }}" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            Add to Cart
+                                        </label>
+                                    </div>
                                 </div>
-                                <p class= " fw-bold ms-5" style="width: 6rem">{{ item.price }}</p>
                             </div>
-                            <p>{{ item.description }}</p>
                         </div>
+                        {% endfor %}
                     </div>
-                    <hr />
-                {% endfor %}
-                </div>                              
-               
-
-                 <div class="form-group pt-3">
-                    <label for="name">Full Name</label>
-                    <input required class="form-control" type="text" placeholder="Your name" name="name"/>
                 </div>
-
                 <div class="form-group pt-3">
                     <label for="name">Full Name</label>
                     <input required class="form-control" type="text" placeholder="Your name" name="name"/>
                 </div>
-
                 <div class="form-group pt-3">
                     <label for="email">Email Address</label>
                     <input required class="form-control" type="text" placeholder="example@company.com" name="email"/>
                 </div>
-           <div class="row">     
-            <div class="d-flex justify-content-evenly bg-light mb-4" style="height: 100px;">
-                <div class="form-group pt-3">
-                    <label for="street">Street</label>
-                    <input required class="form-control" type="text" placeholder=" Street" name="street"/>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group pt-3">
+                            <label for="street">Street</label>
+                            <input required class="form-control" type="text" placeholder="Street" name="street"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group pt-3">
+                            <label for="city">City</label>
+                            <input required class="form-control" type="text" placeholder="City" name="city"/>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="form-group pt-3">
-                    <label for="city">City</label>
-                    <input required class="form-control" type="text" placeholder="City" name="city"/>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group pt-3">
+                            <label for="province">Province</label>
+                            <input required class="form-control" type="text" placeholder="Province" name="province"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group pt-3">
+                            <label for="zip_code">ZIP Code</label>
+                            <input required class="form-control" type="text" placeholder="ZIP" name="zip_code"/>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="form-group pt-3">
-                    <label for="province">Province</label>
-                    <input required class="form-control" type="text" placeholder="Province" name="province"/>
-                </div>
-
-                <div class="form-group pt-3">
-                    <label for="zip_code">ZIP Code</label>
-                    <input required class="form-control" type="text" placeholder="ZIP" name="zip_code"/>
-                </div>
-            </div>
-        </div>         <br>
-
-        <button type="button" class="btn btn-dark col-md-12 col-sm-12 p-4" data-mdb-toggle="modal" data-mdb-target="#submitModal">
-            Place Order
-          </button>
-               
-
-
-
+                <br>
+                <button type="button" class="btn btn-dark col-md-12 col-sm-12 p-4" data-mdb-toggle="modal" data-mdb-target="#submitModal">
+                    Place Order
+                </button>
                 <div class="modal fade" id="submitModal" tabindex="-1" aria-labelledby="submitModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="submitModalLabel">Cofirm Order</h5>
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="submitModalLabel">Confirm Order</h5>
+
                           <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">Are you sure you added everything you wanted?</div>
+                        <div class="modal-body">Are you sure you have added everything you wanted?</div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
                           <button type="submit" class="btn btn-dark">Place Order</button>
