@@ -35,6 +35,7 @@ class OrderModel(models.Model):
     zip_code = models.CharField(max_length=50, blank=True)
     province = models.CharField(max_length=50, blank=True)
     is_paid = models.BooleanField(default=False)
+    is_shipped = models.BooleanField(default=False)
 
 
     def __str__(self) -> str:
