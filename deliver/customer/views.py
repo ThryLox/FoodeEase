@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.db.models import Q
 
 
 class Index(LoginRequiredMixin,View):
@@ -118,3 +118,26 @@ class OrderConfirmation(View):
 class OrderPayConfirmation(View):
     def get(self, request, pk, *args, **kwards):
         return render(request, 'customer/order_pay_confirmation.html')
+
+class Menu(View):
+    def get(self, request, *args, **kwargs):
+        menu_items= MenuItem.objects.all()
+        context = {
+            'menu-items':menu_items
+        }
+        return render(request, 'customer/menu.html', context)
+
+class MenuSearch(View):
+    def get(self, request, *args, **kwargs):
+        query = self.request.GET.get("q")
+        menu_items=MenuItem.objects.filter(
+            Q(name__icontains=query) |
+            Q(price__icontains=query) |
+            Q(description__icontains=query)
+        )
+
+        context ={
+            'menu_items':menu_items
+        }
+
+        return render(request, 'customer/menu.html', context)
