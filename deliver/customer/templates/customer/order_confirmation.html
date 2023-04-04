@@ -2,94 +2,94 @@
 
 {%block content%}
 
+<div class="container mb-3 mt-1">
+  <div class="row justify-content-center mt-1">
+      <div class="col-md-12 col-sm-12 p-1 text-center">
 
-
-<div class="container mb-5">
-    <div class="row justify-content-center mt-1">
-        <div class="col-md-12 col-sm-12 p-4 text-center">
-
-            <h1> Order Summary</h1>
-            <p>You will receive your order confirmation soon.</p>
-            <a href="http://127.0.0.1:8000/"> Go back to home page</a>
-        </div>
-    </div>
+          <h1> Order Summary</h1>
+          <p>You will receive your order confirmation soon.</p>
+          <a href="http://127.0.0.1:8000/"> Go back to home page</a>
+      </div>
+  </div>
 </div>
 
 
 <div class="container-fluid col-md-6 offset-md-3">
-    <div class="col-md-12 col-sm-12 p-4 text-center">
-        <h3 class="">Ordered Items for {{user}}</h3>
-        {%for item in items.all%}
-        <p> {{ item.name}} <span class="pl-3"> {{item.price}}</span></p>
-        {%endfor%}
+  <div class="col-md-12 col-sm-12 p-2 text-center">
+      <h3 class="">Ordered Items for {{user}}</h3>
+      {%for item in items.all%}
+      <p> {{ item.name}} <span class="pl-3"> {{item.price}}</span></p>
+      {%endfor%}
 
-        <p class="font-weight=bold pt-4">Total : {{price}}</p>
-    </div>
-    <div class="row justify-content-center pb-2 pt-5">
-      <div class="col-md-6 text-center">
-        <form method="POST">
-          {% csrf_token %}
-        <button type="submit" class="btn btn-dark">Edit Order</button>
-      </form>
-      </div>
+      <p class="font-weight=bold pt-2">Total : {{price}}</p>
   </div>
-  <div class="row justify-content-center pb-2 pt-5">
+  <div class="row justify-content-center pb-1 pt-1">
     <div class="col-md-6 text-center">
-      
-       
-      <button type="button" class="btn btn-dark" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
-       Pay Later
+      <form method="POST">
+        {% csrf_token %}
+      <button type="submit" class="btn btn-dark">Change your Order</button>
+    </form>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Order Reciept</h5>
+      <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <div class="row justify-content-center pb-1 pt-5">
+        <div class="col-md-6 text-center">
+
+      <h3 class="">Thanks for ordering {{user}}</h3>
+      {%for item in items.all%}
+      <p> {{ item.name}} <span class="pl-3"> {{item.price}}</span></p>
+      {%endfor%}
+
+      <p class="font-weight=bold pt-4">Total : {{price}}</p>
+        </div>
+
+      </div>
+
+
+    </div>
+    <div class="modal-footer">
+     <a href="{% url 'index'%}">
+      <button type="button" class="btn btn-dark" >Go to Home page</button></a>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="row justify-content-center pb-4 pt-5">
+  <div class="col-md-6 text-center">
+      <h3>Pay via PayPal </h3>
+      <div id="paypal-button"></div>
+  </div>
+  <div class="col-md-6 text-center">
+    <h3>Pay on Delivery </h3>
+    <div>
+      <button type="button" class="btn btn-primary btn-lg" data-mdb-toggle="modal" data-mdb-target="#exampleModal" style="width: 350px;">
+        Pay later
       </button>
+      
+    </div>
+  </div>
+</div>
+
       
 
    
     </div>
 </div>
-
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Order Reciept</h5>
-        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="row justify-content-center pb-2 pt-5">
-          <div class="col-md-6 text-center">
-
-        <h3 class="">Thanks for ordering {{user}}</h3>
-        {%for item in items.all%}
-        <p> {{ item.name}} <span class="pl-3"> {{item.price}}</span></p>
-        {%endfor%}
-
-        <p class="font-weight=bold pt-4">Total : {{price}}</p>
-          </div>
-
-        </div>
-
-
-      </div>
-      <div class="modal-footer">
-       <a href="{% url 'index'%}">
-        <button type="button" class="btn btn-dark" >Go to Home page</button></a>
-      </div>
-    </div>
-  </div>
 </div>
 
 
-  <div class="row justify-content-center pb-2 pt-5">
-        <div class="col-md-6 text-center">
-            <h3>You can also Pay Now </h3>
-        </div>
-    </div>
-    <div class="row justify-content-center pb-5">
-        <div class="col-md-6 text-center">
-            <div id="paypal-button"></div>
-        </div>
-    </div>
-</div>
+
 
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 <script>
