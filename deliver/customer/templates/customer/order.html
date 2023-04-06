@@ -1,8 +1,18 @@
 {% extends 'customer/base.html' %}
 
 {% block content %}
+<div class="justify-content-center">
+       
+    {% for message in messages %}
+    <div class="alert alert-danger "  role="alert">
+<p id="messages" class = "text-center" >{{message}}</p> 
+{%endfor%}
+</div>
+  
 <div class="container-fluid">
-    <div class="justify-content-center">
+   
+   
+       
         <div class="col-md-12 col-sm-12 p-4">
             <form method="POST">
                 {% csrf_token %}
@@ -39,7 +49,7 @@
                     <div class="col-md-6">
                         <div class="form-group pt-3">
                             <label for="street">Street</label>
-                            <input required class="form-control" type="text" placeholder="Street" name="street"/>
+                            <input  class="form-control" type="text" placeholder="Street" name="street"/>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -77,6 +87,7 @@
                         </div>
                         <div class="modal-body">Are you sure you have added everything you wanted?</div>
                         <div class="modal-footer">
+                            
                           <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
                           <button type="submit" class="btn btn-dark">Add Order</button>
                         </div>

@@ -63,10 +63,10 @@ class Order(LoginRequiredMixin,View):
         }
 
         items = request.POST.getlist('items[]')
-
+        user = request.user
         for item in items:
             menu_item = MenuItem.objects.get(pk__contains=int(item))
-            user = request.user
+            
             item_data = {
                 'id': menu_item.pk,
                 'name': menu_item.name,
@@ -76,12 +76,15 @@ class Order(LoginRequiredMixin,View):
 
             order_items['items'].append(item_data)
 
-            price = 0
-            item_ids = []
+        price = 0
+        item_ids = []
 
+        
+    
         for item in order_items['items']:
             price += item['price']
             item_ids.append(item['id'])
+        
         
 
         order = OrderModel.objects.create(
@@ -99,8 +102,14 @@ class Order(LoginRequiredMixin,View):
             'user':user
         }
 
-
-        return redirect('order_confirmation', pk = order.pk)
+        if price == 0:
+            messages.success(request, 'Please Select atleast One Item')
+            order = OrderModel.objects.last()
+            print(order)
+            order.delete()
+            return redirect('order')
+        else:
+            return redirect('order_confirmation', pk = order.pk)
     
 class OrderConfirmation(View):
     def get(self, request, pk, *args, **kwards):
